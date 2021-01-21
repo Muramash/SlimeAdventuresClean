@@ -1,0 +1,44 @@
+﻿  main.cpp
+C:\Users\Muramash\Desktop\GameProjects\YNOV M1\Game Design\Slime Adventures\Slime Adventures\main.cpp(2,10): warning C4067: jetons inattendus après la directive du préprocesseur - saut de ligne attendu
+C:\Users\Muramash\Desktop\GameProjects\YNOV M1\Game Design\Slime Adventures\Slime Adventures\Enemy.h(32,29): warning C4244: 'return' : conversion de 'const T' en 'int', perte possible de données
+          with
+          [
+              T=float
+          ]
+C:\Users\Muramash\Desktop\GameProjects\YNOV M1\Game Design\Slime Adventures\Slime Adventures\Enemy.h(35,29): warning C4244: 'return' : conversion de 'const T' en 'int', perte possible de données
+          with
+          [
+              T=float
+          ]
+C:\Users\Muramash\Desktop\GameProjects\YNOV M1\Game Design\Slime Adventures\Slime Adventures\Ground.h(25,30): warning C4244: 'return' : conversion de 'const T' en 'int', perte possible de données
+          with
+          [
+              T=float
+          ]
+C:\Users\Muramash\Desktop\GameProjects\YNOV M1\Game Design\Slime Adventures\Slime Adventures\Ground.h(28,30): warning C4244: 'return' : conversion de 'const T' en 'int', perte possible de données
+          with
+          [
+              T=float
+          ]
+C:\Users\Muramash\Desktop\GameProjects\YNOV M1\Game Design\Slime Adventures\Slime Adventures\Player.h(33,30): warning C4244: 'return' : conversion de 'const T' en 'int', perte possible de données
+          with
+          [
+              T=float
+          ]
+C:\Users\Muramash\Desktop\GameProjects\YNOV M1\Game Design\Slime Adventures\Slime Adventures\Player.h(36,30): warning C4244: 'return' : conversion de 'const T' en 'int', perte possible de données
+          with
+          [
+              T=float
+          ]
+C:\Users\Muramash\Desktop\GameProjects\YNOV M1\Game Design\Slime Adventures\Slime Adventures\main.cpp(10,13): warning C4326: le type de retour de 'main' doit être 'int' au lieu de 'void'
+C:\Users\Muramash\Desktop\GameProjects\YNOV M1\Game Design\Slime Adventures\Slime Adventures\main.cpp(195,21): warning C4018: '<' : incompatibilité signed/unsigned
+C:\Users\Muramash\Desktop\GameProjects\YNOV M1\Game Design\Slime Adventures\Slime Adventures\main.cpp(270,21): warning C4018: '<' : incompatibilité signed/unsigned
+C:\Users\Muramash\Desktop\GameProjects\YNOV M1\Game Design\Slime Adventures\Slime Adventures\main.cpp(281,21): warning C4018: '<' : incompatibilité signed/unsigned
+C:\Users\Muramash\Desktop\GameProjects\YNOV M1\Game Design\Slime Adventures\Slime Adventures\main.cpp(312,37): warning C4244: '=' : conversion de 'int' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+C:\Users\Muramash\Desktop\GameProjects\YNOV M1\Game Design\Slime Adventures\Slime Adventures\main.cpp(333,21): warning C4018: '<' : incompatibilité signed/unsigned
+C:\Users\Muramash\Desktop\GameProjects\YNOV M1\Game Design\Slime Adventures\Slime Adventures\main.cpp(336,21): warning C4018: '<' : incompatibilité signed/unsigned
+  Slime Adventures.vcxproj -> C:\Users\Muramash\Desktop\GameProjects\YNOV M1\Game Design\Slime Adventures\Debug\Slime Adventures.exe
