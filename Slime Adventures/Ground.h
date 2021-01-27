@@ -21,11 +21,23 @@ public:
 	void setPos(sf::Vector2f newPos) {
 		ground.setPosition(newPos);
 	}
+
 	int getY() {
 		return ground.getPosition().y;
 	}
+
 	int getX() {
 		return ground.getPosition().x;
+	}
+
+	sf::RectangleShape getGround()
+	{
+		return this->ground;
+	}
+
+	sf::Texture getTexture()
+	{
+		return *this->ground.getTexture();
 	}
 
 private:

@@ -1,11 +1,12 @@
 #include <SFML/Graphics.hpp>
 #include "iostream";
-#include "Player.h"
-#include "Coin.h"
-#include "Ground.h"
-#include "Enemy.h"
-#include <sstream>
-#include <cmath>
+#include "Player.h";
+#include "Coin.h";
+#include "Ground.h";
+#include "Enemy.h";
+#include "Level.h";
+#include <sstream>;
+#include <cmath>;
 
 void main() {
 	int newWidth, newHeight;
@@ -14,28 +15,24 @@ void main() {
 	const int globalBlocSizeX = 40;
 	const int globalBlocSizeY = 40;
 
-	std::vector<Ground*> collisionTab;
-
-	sf::RenderWindow window(sf::VideoMode(screenDimensionX, screenDimensionY), "Slime Adventures");
-	
+	sf::RenderWindow window(sf::VideoMode(screenDimensionX, screenDimensionY), "Slime Adventures");	
 	
 	window.setFramerateLimit(120);
 	window.setVerticalSyncEnabled(true);
 
 	sf::Clock clock;
 
-	//BACKGROUND
-	sf::Texture backgroundTexture;
+	Level actualLevel("res/levelOne.json");
+	actualLevel.setScreenDimension(screenDimensionX, screenDimensionY);
+	actualLevel.setGlobalBlocSize(globalBlocSizeX, globalBlocSizeY);
+	actualLevel.generateLevel();
 
-	if (!backgroundTexture.loadFromFile("res/img/background.png")) {
-		std::cout << "Load failed" << std::endl;
+	// actualLevel->generateLevel();
 
-		system("pause");
-	}
-
-	sf::Sprite background;
-	background.setTexture(backgroundTexture);
-	background.setTextureRect(sf::IntRect(0,0, screenDimensionX, screenDimensionY));
+	// TEMP
+	std::vector<Ground*> collisionTab = actualLevel.getCollisionTab();
+	//std::vector<Ground*> grassVector = actualLevel->grassVector;
+	// **
 
 	//VIEW
 	sf::View view;
@@ -43,67 +40,14 @@ void main() {
 	view.reset(sf::FloatRect(0, 0, screenDimensionX, screenDimensionY));
 	view.setViewport(sf::FloatRect(0, 0, 1.0f, 1.0f));
 
-	sf::Vector2f screenPosition(screenDimensionX / 2, screenDimensionY / 2);
+	sf::Vector2f screenPosition(screenDimensionX / 2, screenDimensionY / 2);	
 
-	//Grass Ground
-	sf::Texture grassTexture;
-	if (!grassTexture.loadFromFile("res/img/grass.jpg")) {
-		std::cout << "Load failed" << std::endl;
-
-		system("pause");
-	}
-	float grasslayerX = 0;
-	float grasslayerY = 640;
-	std::vector<Ground*> grassVector;
-
-	for (int i = 0; i < 40; i++) {
-		if (i > 30)
-			grasslayerX = grasslayerX + 250;
-
-		Ground* grass = new Ground({ globalBlocSizeX,globalBlocSizeY }, &grassTexture);
-		grassVector.push_back(grass);
-		collisionTab.push_back(grass);
-		std::cout << "test i " << i << " premier : " << grass << std::endl;
-		grass->setPos({ grasslayerX, grasslayerY });
-		grasslayerX = grasslayerX + 40;
-	}
-
-	//Dirt Ground
-	sf::Texture dirtTexture;
-	if (!dirtTexture.loadFromFile("res/img/dirt.jpg")) {
-		std::cout << "Load failed" << std::endl;
-
-		system("pause");
-	}
-
-	float dirtlayerX = 0;
-	float dirtlayerY = 680;
-	std::vector<Ground*> dirtVector;
-
-	for (int i = 0; i < 3; i++) {
-		for (int i = 0; i < 40; i++) {
-			if (i > 30)
-				dirtlayerX = dirtlayerX + 250;
-
-			Ground* dirt = new Ground({ globalBlocSizeX,globalBlocSizeY }, &dirtTexture);
-			dirtVector.push_back(dirt);
-			collisionTab.push_back(dirt);
-			dirt->setPos({ dirtlayerX, dirtlayerY });
-			dirtlayerX = dirtlayerX + 40;
-		}
-		dirtlayerX = 0;
-		dirtlayerY = dirtlayerY + 40;
-		std::cout << "dirtlayer X = " << dirtlayerX <<  std::endl;
-		std::cout << "dirtlayer Y = " << dirtlayerY << std::endl;
-	}
-	
-
-	Ground dirt({ globalBlocSizeX,globalBlocSizeY }, &dirtTexture);
+	/*Ground dirt({ globalBlocSizeX,globalBlocSizeY }, &dirtTexture);
 	collisionTab.push_back(&dirt);
 	dirt.setPos({ 150,500 });
 	Ground dirt2({ globalBlocSizeX,globalBlocSizeY }, &dirtTexture);
 	collisionTab.push_back(&dirt2);
-	dirt2.setPos({ 150,540 });
+	dirt2.setPos({ 150,540 });*/
 
 	//Player instance
 	sf::Texture playertexture;
@@ -315,30 +259,29 @@ void main() {
 
 		view.setCenter(screenPosition);
 
-		//Draw background
-		window.draw(background);
+		// Draw background
+		window.draw(actualLevel.getBackground());
 		window.draw(lblScore);
 		window.draw(lblBigMessage);
 
 		window.setView(view);
-		//Maping, drawing.
-		//TIPS : Plus un élément est appelé tôt, plus il sera en "arrière plan" par rapport à un autre
 
-		//Draw playground
+		// Maping, drawing.
+		/*
+		 ** TIPS : Plus un élément est appelé tôt, plus il sera en "arrière plan" par rapport à un autre
+		 */
+
+		// Draw playground
 		coin1.drawTo(window);
 		coin2.drawTo(window);
 		enemy1.drawTo(window);
 		enemy2.drawTo(window);
 		player.drawTo(window);
-		for (int i = 0; i < dirtVector.size(); i++) {
-			dirtVector[i]->drawTo(window);
-		}
-		for (int i = 0; i < grassVector.size(); i++) {
-			grassVector[i]->drawTo(window);
-		}
 
-		dirt.drawTo(window); //FOR TEST ONLY
-		dirt2.drawTo(window); //FOR TEST ONLY
+		actualLevel.drawLevel(window);
+
+		//dirt.drawTo(window); //FOR TEST ONLY
+		//dirt2.drawTo(window); //FOR TEST ONLY
 
 		window.setView(window.getDefaultView());
 

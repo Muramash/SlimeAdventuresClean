@@ -1,0 +1,71 @@
+{
+  "backgroundTexturePath": "res/img/background.png",
+  "groundTextures": [
+    {
+      "id": 1,
+      "name": "grass",
+      "pathFile": "res/img/grass.jpg"
+    },
+    {
+      "id": 2,
+      "name": "dirt",
+      "pathFile": "res/img/dirt.jpg"
+    },
+    {
+      "id": 3,
+      "name": "sand",
+      "pathFile": "res/img/sand.jpg"
+    },
+    {
+      "id": 4,
+      "name": "brick",
+      "pathFile": "res/img/brick.png"
+    }
+  ],
+  "levelDesign": [
+    {
+      "line": 1,
+      "blocks": [
+        {
+          "id": 1,
+          "number": 3
+        },
+        {
+          "id": 0,
+          "number": 2
+        },
+        {
+          "id": 3,
+          "number": 5
+        }
+      ]
+    },
+    {
+      "line": 2,
+      "blocks": [
+        {
+          "id": 2,
+          "number": 50
+        }
+      ]
+    },
+    {
+      "line": 3,
+      "blocks": [
+        {
+          "id": 2,
+          "number": 50
+        }
+      ]
+    },
+    {
+      "line": 4,
+      "blocks": [
+        {
+          "id": 1,
+          "number": 50
+        }
+      ]
+    }
+  ]
+}
