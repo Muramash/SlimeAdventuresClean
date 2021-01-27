@@ -41,7 +41,7 @@ int Level::generateLevel()
 	background.setTextureRect(sf::IntRect(0, 0, screenDimensionX, screenDimensionY));
 
 	float layerX = 0;
-	float layerY = 800;
+	float layerY = screenDimensionY;
 	// For each line
 	for (auto& td : levelFile["levelDesign"])
 	{
